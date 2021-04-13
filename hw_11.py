@@ -78,13 +78,9 @@ float_lst = []
 str_lst = []
 for elem in lst:
     types = []
-    for sym in elem:
-        sym_type = type(sym)
-        types.append(sym_type.__name__)
+    [types.append((type(sym)).__name__) for sym in elem if (type(sym)).__name__]
     single_types = []
-    for i_types in types:
-        if i_types not in single_types:
-            single_types.append(i_types)
+    [single_types.append(i_types) for i_types in types if i_types not in single_types]
     types_count = []
     for element_type in single_types:
         type_count = types.count(element_type)
@@ -93,9 +89,7 @@ for elem in lst:
         index_max = types_count.index(max(types_count))
         main_type = single_types[index_max]
     separated_list = []
-    for element in elem:
-        if type(element).__name__ == main_type:
-            separated_list.append(element)
+    [separated_list.append(element) for element in elem if type(element).__name__ == main_type]
     int_lst.extend(separated_list)
     float_lst.extend(separated_list)
     str_lst.extend(separated_list)
