@@ -77,7 +77,7 @@ clean_list = []
 for elem in lst:
     types = [(type(sym)).__name__ for sym in elem if (type(sym)).__name__]
     single_types = []
-    [single_types.append(i_types) for i_types in types if i_types not in single_types]
+    single_types = [i_types for i_types in types if i_types not in single_types]
     types_count = [types.count(element_type) for element_type in single_types]
     max_types_count = max(types_count)
     index_max = types_count.index(max(types_count))
